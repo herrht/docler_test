@@ -127,11 +127,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="StepDefinitions\FormInteractionsSteps.cs" />
+    <Compile Include="StepDefinitions\PageAppearanceSteps.cs" />
     <Compile Include="StepDefinitions\PageNavigationSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Features\FormInteractions.feature" />
+    <None Include="Features\PageAppearance.feature" />
     <None Include="packages.config" />
     <None Include="Features\PageNavigation.feature" />
   </ItemGroup>
