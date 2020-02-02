@@ -1,6 +1,6 @@
 ﻿@page_appearance
 Feature: PageAppearance
-	Test is important page elements are visible
+	Test if important page elements are visible
 
 @HighPrio @REQ-UI-11
 Scenario: Form is visible with input field and submit button

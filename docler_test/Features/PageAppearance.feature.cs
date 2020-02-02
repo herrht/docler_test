@@ -37,7 +37,7 @@ namespace docler_test.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "PageAppearance", "\tTest is important page elements are visible", ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "PageAppearance", "\tTest if important page elements are visible", ProgrammingLanguage.CSharp, new string[] {
                         "page_appearance"});
             testRunner.OnFeatureStart(featureInfo);
         }

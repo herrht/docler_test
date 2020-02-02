@@ -82,9 +82,9 @@ namespace docler_test.Features
         [NUnit.Framework.CategoryAttribute("REQ-UI-03")]
         [NUnit.Framework.CategoryAttribute("REQ-UI-05")]
         [NUnit.Framework.CategoryAttribute("REQ-UI-08")]
-        [NUnit.Framework.TestCaseAttribute("home_button", "home_page", null)]
-        [NUnit.Framework.TestCaseAttribute("form_button", "form_page", null)]
-        [NUnit.Framework.TestCaseAttribute("UI_Testing_button", "home_page", null)]
+        [NUnit.Framework.TestCaseAttribute("home", ".com/", null)]
+        [NUnit.Framework.TestCaseAttribute("form", "form.html", null)]
+        [NUnit.Framework.TestCaseAttribute("site", ".com/", null)]
         public virtual void NavigationBetweenPages(string button, string page, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -167,10 +167,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("The \"navigation_bar\" is visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 20
- testRunner.When("I click on the \"error_button\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I click on the \"error\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 21
- testRunner.Then("I should get a \"404 HTTP Response code\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should get an error response code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
