@@ -49,7 +49,7 @@ namespace docler_test.StepDefinitions
         public void ThenTheTitleShouldBe(string title_string)
         {
             String currentTitle = driver.Title;
-            Assert.AreEqual(currentTitle, title_string);
+            Assert.AreEqual(title_string, currentTitle);
         }
 
         [Then(@"The ""(.*)"" should turn to active status")]
@@ -70,7 +70,7 @@ namespace docler_test.StepDefinitions
             System.Console.WriteLine("Printer: ThenTheTextShouldBeVisibleIn - String");
             IWebElement element = driver.FindElement(By.TagName(tagType));
             String text = element.Text;
-            Assert.AreEqual(text, textCheck);
+            Assert.AreEqual(textCheck, text);
         }
     }
 }
