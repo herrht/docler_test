@@ -1,8 +1,9 @@
 ﻿using System;
 using TechTalk.SpecFlow;
-using OpenQA.Selenium; //until PageObjects are created
-using OpenQA.Selenium.Chrome; //until PageObjects are created
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using NUnit.Framework;
+using docler_test.PageObjects;
 
 
 namespace docler_test.StepDefinitions
@@ -10,39 +11,67 @@ namespace docler_test.StepDefinitions
     [Binding]
     public class PageNavigationSteps
     {
-        public IWebDriver driver; //until PageObjects are created
+        public IWebDriver driver;
+        CommonPage CommonPageInstance;
+        HomePage HomePageInstance;
+        FormPage FormPageInstance;
+        ErrorPage ErrorPageInstance;
+        NavigationBar NavigationBarInstance;
 
-        [Given(@"The ""(.*)"" is visible")]
-        public void GivenTheIsVisible(string navigationBar)
+        [Given(@"The navigation bar is visible")]
+        public void GivenTheNavigationBarIsVisible()
         {
-            System.Console.WriteLine("Printer: GivenThe - String - IsVisible");
+            /*
             driver = new ChromeDriver();
             driver.Url = "http://uitest.duodecadits.com/";
             Assert.IsTrue(driver.FindElement(By.Id("navbar")).Displayed); //use string variable here
+            */
+            driver = new ChromeDriver();
+            driver.Url = "http://uitest.duodecadits.com/";
+            NavigationBarInstance = new NavigationBar(driver);
+            Assert.IsTrue(NavigationBarInstance.IsTheNavBarDisplayed());
         }
 
         [When(@"I click on the ""(.*)""")]
         public void WhenIClickOnThe(string button)
         {
-            //ScenarioContext.Current.Pending();
-            System.Console.WriteLine("Printer: WhenIClickOnThe - String");
-            driver.FindElement(By.Id(button)).Click();
+            //driver.FindElement(By.Id(button)).Click();
+            CommonPageInstance = NavigationBarInstance.ClickOnButton(button);
         }
 
         [Then(@"I should get navigated to the ""(.*)""")]
-        public void ThenIShouldGetNavigatedToThe(string urlEnd)
+        public void ThenIShouldGetNavigatedToThe(string newPage)
         {
-            //ScenarioContext.Current.Pending();
-            System.Console.WriteLine("Printer: ThenIShouldGetNavigatedToThe - String");
-            Assert.IsTrue(driver.Url.EndsWith(urlEnd));
+            //Assert.IsTrue(driver.Url.EndsWith(urlEnd));
+
+            if (String.Equals(newPage, "Home"))
+            {
+                System.Console.WriteLine("You have navigated to the Home Page");
+                Assert.IsTrue(driver.Url.Contains(((HomePage)CommonPageInstance).GetUniqueString()));
+            }
+            else if (String.Equals(newPage, "Form"))
+            {
+                System.Console.WriteLine("You have navigated to the Form Page");
+                Assert.IsTrue(driver.Url.Contains(((FormPage)CommonPageInstance).GetUniqueString()));
+            }
+            else if (String.Equals(newPage, "UI Testing"))
+            {
+                System.Console.WriteLine("You have navigated to the Home Page");
+                Assert.IsTrue(driver.Url.Contains(((HomePage)CommonPageInstance).GetUniqueString()));
+            }
+            else
+            {
+                System.Console.WriteLine("Invalid Page");
+                Assert.Fail(); 
+            }
         }
 
         [Then(@"I should get an error response code")]
         public void ThenIShouldGetAnErrorResponseCode()
         {
-            //ScenarioContext.Current.Pending();
-            System.Console.WriteLine("Printer: ThenIShouldGetAnErrorResponseCode - String");
-            Assert.IsTrue(driver.PageSource.Contains("404 Error"));
+            //Assert.IsTrue(driver.PageSource.Contains("404 Error"));
+            Assert.IsTrue((((ErrorPage)CommonPageInstance).VerifyErrorMessage()));
         }
+
     }
 }

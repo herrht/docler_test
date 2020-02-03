@@ -82,9 +82,9 @@ namespace docler_test.Features
         [NUnit.Framework.CategoryAttribute("REQ-UI-03")]
         [NUnit.Framework.CategoryAttribute("REQ-UI-05")]
         [NUnit.Framework.CategoryAttribute("REQ-UI-08")]
-        [NUnit.Framework.TestCaseAttribute("home", ".com/", null)]
-        [NUnit.Framework.TestCaseAttribute("form", "form.html", null)]
-        [NUnit.Framework.TestCaseAttribute("site", ".com/", null)]
+        [NUnit.Framework.TestCaseAttribute("Home", "Home", null)]
+        [NUnit.Framework.TestCaseAttribute("Form", "Form", null)]
+        [NUnit.Framework.TestCaseAttribute("UI Testing", "Home", null)]
         public virtual void NavigationBetweenPages(string button, string page, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -119,7 +119,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
- testRunner.Given("The \"navigation_bar\" is visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("The navigation bar is visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
  testRunner.When(string.Format("I click on the \"{0}\"", button), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -164,7 +164,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 19
- testRunner.Given("The \"navigation_bar\" is visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("The navigation bar is visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 20
  testRunner.When("I click on the \"error\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

@@ -4,10 +4,10 @@ Feature: FormInteractions
 
 @HighPrio @REQ-UI-12
 Scenario Outline: Entering name in the form
-	Given I am on the "/form.html"
-	When I type "<name>" in the "hello-input"
-	And Click on the "hello-submit"
-	Then I should be redirected to the "/hello.html"
+	Given I am on the form page
+	When I type "<name>" in the input field
+	And Click on the submit button
+	Then I should be redirected to the Hello page
 	And A "<welcome>" text should appear
 
 	Examples:
