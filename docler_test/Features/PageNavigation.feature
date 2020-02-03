@@ -17,5 +17,5 @@ Scenario Outline: Navigation between pages
 @HighPrio @REQ-UI-07
 Scenario: Go to error page and get error response
 	Given The navigation bar is visible
-	When I click on the "error"
+	When I click on the "Error"
 	Then I should get an error response code

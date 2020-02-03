@@ -167,7 +167,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("The navigation bar is visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 20
- testRunner.When("I click on the \"error\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I click on the \"Error\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 21
  testRunner.Then("I should get an error response code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

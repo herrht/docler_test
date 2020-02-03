@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
@@ -35,6 +30,7 @@ namespace docler_test.PageObjects
         public NavigationBar(IWebDriver driver)
         {
             this.driver = driver;
+            this.driver.Url = baseAddress;
             PageFactory.InitElements(driver, this);
         }
         
@@ -61,7 +57,7 @@ namespace docler_test.PageObjects
                 UiTestingButton.Click();
                 return new HomePage(driver);
             }
-            else if (String.Equals(button, "error"))
+            else if (String.Equals(button, "Error"))
             {
                 ErrorButton.Click();
                 return new ErrorPage(driver);

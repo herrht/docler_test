@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
@@ -26,7 +22,7 @@ namespace docler_test.PageObjects
 
         // --- Variables --------------------------- //
         private IWebDriver driver;
-        private String UniqueString = "/";
+        private String uniqueString = "/";
         public IWebElement HomeButtonParent;
 
         // --- Constructor ------------------------- //
@@ -39,7 +35,7 @@ namespace docler_test.PageObjects
         // --- Functions --------------------------- //
         public String GetUniqueString()
         {
-            return UniqueString;
+            return uniqueString;
         }
 
         override public Boolean IsTheLogoVisible()

@@ -109,11 +109,6 @@ namespace docler_test.StepDefinitions
         [Then(@"The text should be visible in ""(.*)"": ""(.*)""")]
         public void ThenTheTextShouldBeVisibleIn(string tagType, string textCheck)
         {
-            /*
-            IWebElement element = driver.FindElement(By.TagName(tagType));
-            String text = element.Text;
-            Assert.AreEqual(textCheck, text);
-            */
             Assert.IsTrue(((HomePage)CurrentPage).IsTheTextVisible(tagType, textCheck));
         }
     }

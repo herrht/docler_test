@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
@@ -20,7 +16,7 @@ namespace docler_test.PageObjects
         
         // --- Variables --------------------------- //
         private IWebDriver driver;
-        private readonly String UniqueString = "/error";
+        private readonly String uniqueString = "/error";
         private readonly String ErrorMessage = "404 Error";
         
         // --- Constructor ------------------------- //
@@ -33,7 +29,7 @@ namespace docler_test.PageObjects
         // --- Functions --------------------------- //
         public String GetUniqueString()
         {
-            return UniqueString;
+            return uniqueString;
         }
         public Boolean VerifyErrorMessage()
         {

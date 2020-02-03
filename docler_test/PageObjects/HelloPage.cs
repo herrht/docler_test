@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
@@ -20,7 +16,7 @@ namespace docler_test.PageObjects
 
         // --- Variables --------------------------- //
         private IWebDriver driver;
-        private String UniqueString = "/hello.html";
+        private String uniqueString = "/hello.html";
 
         // --- Constructor ------------------------- //
         public HelloPage(IWebDriver driver)
@@ -37,7 +33,7 @@ namespace docler_test.PageObjects
 
         public String GetUniqueString()
         {
-            return UniqueString;
+            return uniqueString;
         }
 
         public String HelloText()
