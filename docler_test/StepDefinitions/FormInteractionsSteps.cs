@@ -13,13 +13,13 @@ namespace docler_test.StepDefinitions
         public IWebDriver driver; //until PageObjects are created
 
         [Given(@"I am on the ""(.*)""")]
-        public void GivenIAmOnThe(string p0)
+        public void GivenIAmOnThe(string page)
         {
             //ScenarioContext.Current.Pending();
             System.Console.WriteLine("Printer: GivenIAmOnThe - String");
             driver = new ChromeDriver();
-            driver.Url = "http://uitest.duodecadits.com/form.html";
-            Assert.IsTrue(driver.Url.EndsWith("/form.html"));
+            driver.Url = "http://uitest.duodecadits.com"+page;
+            Assert.IsTrue(driver.Url.EndsWith(page));
         }
 
         [When(@"I type ""(.*)"" in the ""(.*)""")]
@@ -27,7 +27,7 @@ namespace docler_test.StepDefinitions
         {
             //ScenarioContext.Current.Pending();
             System.Console.WriteLine("Printer: WhenITypeInThe - String");
-            driver.FindElement(By.Id("hello-input")).SendKeys(name);
+            driver.FindElement(By.Id(input_field)).SendKeys(name);
         }
 
         [When(@"Click on the ""(.*)""")]
@@ -35,7 +35,7 @@ namespace docler_test.StepDefinitions
         {
             //ScenarioContext.Current.Pending();
             System.Console.WriteLine("Printer: WhenClickOnThe - String");
-            driver.FindElement(By.Id("hello-submit")).Click();
+            driver.FindElement(By.Id(submit_button)).Click();
         }
 
         [Then(@"I should be redirected to the ""(.*)""")]
@@ -43,7 +43,7 @@ namespace docler_test.StepDefinitions
         {
             //ScenarioContext.Current.Pending();
             System.Console.WriteLine("Printer: ThenIShouldBeRedirectedToThe - String");
-            Assert.IsTrue(driver.Url.Contains("hello.html"));
+            Assert.IsTrue(driver.Url.Contains(hello_page));
         }
 
         [Then(@"A ""(.*)"" text should appear")]

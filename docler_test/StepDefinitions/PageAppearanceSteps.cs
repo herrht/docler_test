@@ -25,9 +25,17 @@ namespace docler_test.StepDefinitions
         [Then(@"The ""(.*)"" should be visible")]
         public void ThenTheShouldBeVisible(string element)
         {
-            IWebElement image_object = driver.FindElement(By.Id(element));
-            String image_src = image_object.GetAttribute("src");
-            StringAssert.Contains("doclerholding.jpg", image_src);
+            IWebElement webElement = driver.FindElement(By.Id(element));
+            String elementTag = webElement.TagName ;
+            if (elementTag.Equals("img"))
+            {
+                String image_src = webElement.GetAttribute("src");
+                StringAssert.Contains("doclerholding.jpg", image_src);
+            }
+            else if (elementTag.Equals("input"))
+            {
+                Assert.IsTrue(webElement.Displayed);
+            }
         }
 
         [Then(@"The ""(.*)"" should be ""(.*)""")]
