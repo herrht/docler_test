@@ -109,16 +109,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
- testRunner.When("I am on the \"/form.html\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I am on the \"Form\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
- testRunner.Then("The \"hello-form\" should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The \"form\" should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 9
- testRunner.And("The \"hello-input\" should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("The \"input field\" should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
- testRunner.And("The \"hello-submit\" should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("The \"submit button\" should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -129,9 +129,10 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.CategoryAttribute("ModeratePrio")]
         [NUnit.Framework.CategoryAttribute("REQ-UI-01")]
         [NUnit.Framework.CategoryAttribute("REQ-UI-02")]
-        [NUnit.Framework.TestCaseAttribute("/", null)]
-        [NUnit.Framework.TestCaseAttribute("/form.html", null)]
-        [NUnit.Framework.TestCaseAttribute("/error", null)]
+        [NUnit.Framework.TestCaseAttribute("Home", null)]
+        [NUnit.Framework.TestCaseAttribute("Form", null)]
+        [NUnit.Framework.TestCaseAttribute("Error", null)]
+        [NUnit.Framework.TestCaseAttribute("Hello", null)]
         public virtual void CheckPageTitleAndLogoOnEveryPage(string page, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -171,55 +172,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Then("The title should be \"UI Testing Site\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 16
- testRunner.And("The \"dh_logo\" should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Check page title and logo on submitted form page")]
-        [NUnit.Framework.CategoryAttribute("ModeratePrio")]
-        [NUnit.Framework.CategoryAttribute("REQ-UI-01")]
-        [NUnit.Framework.CategoryAttribute("REQ-UI-02")]
-        public virtual void CheckPageTitleAndLogoOnSubmittedFormPage()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "ModeratePrio",
-                    "REQ-UI-01",
-                    "REQ-UI-02"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check page title and logo on submitted form page", null, new string[] {
-                        "ModeratePrio",
-                        "REQ-UI-01",
-                        "REQ-UI-02"});
-#line 25
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 30
- testRunner.When("I am on the \"/hello.html\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 31
- testRunner.Then("The title should be \"UI Testing Site\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 32
- testRunner.And("The \"dh_logo\" should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("The \"company logo\" should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -243,7 +196,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "REQ-UI-04",
                         "REQ-UI-09",
                         "REQ-UI-10"});
-#line 35
+#line 26
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -263,17 +216,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 36
- testRunner.When("I am on the \"/\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 27
+ testRunner.When("I am on the \"Home\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 37
- testRunner.Then("The \"home\" should turn to active status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 28
+ testRunner.Then("The \"home\" button should turn to active status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 38
+#line 29
  testRunner.And("The text should be visible in \"h1\": \"Welcome to the Docler Holding QA Department\"" +
                         "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 39
+#line 30
  testRunner.And("The text should be visible in \"p\": \"This site is dedicated to perform some exerci" +
                         "ses and demonstrate automated web testing.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -293,7 +246,7 @@ this.ScenarioInitialize(scenarioInfo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check the icon on the form page", null, new string[] {
                         "LowPrio",
                         "REQ-UI-06"});
-#line 42
+#line 33
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -313,11 +266,11 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 43
- testRunner.When("I am on the \"/form.html\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 34
+ testRunner.When("I am on the \"Form\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 44
- testRunner.Then("The \"form\" should turn to active status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 35
+ testRunner.Then("The \"form\" button should turn to active status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

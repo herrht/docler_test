@@ -13,9 +13,6 @@ namespace docler_test.StepDefinitions
     {
         public IWebDriver driver;
         CommonPage CommonPageInstance;
-        HomePage HomePageInstance;
-        FormPage FormPageInstance;
-        ErrorPage ErrorPageInstance;
         NavigationBar NavigationBarInstance;
 
         [Given(@"The navigation bar is visible")]

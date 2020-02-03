@@ -12,9 +12,7 @@ namespace docler_test.PageObjects
 {
     class NavigationBar : CommonPage
     {
-        private IWebDriver driver;
-        //private String UniqueString = "/";
-
+        // --- Elements ---------------------------- //
         [FindsBy(How = How.Id, Using = "navbar")]
         public IWebElement NavigationBarElement { get; set; }
 
@@ -30,13 +28,18 @@ namespace docler_test.PageObjects
         [FindsBy(How = How.Id, Using = "site")]
         public IWebElement UiTestingButton { get; set; }
 
+        // --- Variables --------------------------- //
+        private IWebDriver driver;
+
+        // --- Constructor ------------------------- //
         public NavigationBar(IWebDriver driver)
         {
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
-
-        public bool IsTheNavBarDisplayed()
+        
+        // --- Functions --------------------------- //
+        public Boolean IsTheNavBarDisplayed()
         {
             return NavigationBarElement.Displayed;
         }

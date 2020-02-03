@@ -1,8 +1,9 @@
 ﻿using System;
 using TechTalk.SpecFlow;
-using OpenQA.Selenium; //until PageObjects are created
-using OpenQA.Selenium.Chrome; //until PageObjects are created
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using NUnit.Framework;
+using docler_test.PageObjects;
 
 
 namespace docler_test.StepDefinitions
@@ -10,39 +11,85 @@ namespace docler_test.StepDefinitions
     [Binding]
     public class PageAppearanceSteps
     {
-        public IWebDriver driver; //until PageObjects are created
+        public IWebDriver driver;
+        CommonPage CurrentPage;
+        HomePage HomePageInstance;
+        FormPage FormPageInstance;
+        ErrorPage ErrorPageInstance;
+        HelloPage HelloPageInstance;
 
         [When(@"I am on the ""(.*)""")]
         public void WhenIAmOnThe(string page)
         {
-            //ScenarioContext.Current.Pending();
-            System.Console.WriteLine("Printer: WhenIAmOnThe - String");
             driver = new ChromeDriver();
-            driver.Url = "http://uitest.duodecadits.com"+page;
-            Assert.IsTrue(driver.Url.EndsWith(page));
-        }
-        
-        [Then(@"The ""(.*)"" should be visible")]
-        public void ThenTheShouldBeVisible(string element)
-        {
-            IWebElement webElement = driver.FindElement(By.Id(element));
-            String elementTag = webElement.TagName ;
-            if (elementTag.Equals("img"))
+
+            if (String.Equals(page, "Home"))
             {
-                String image_src = webElement.GetAttribute("src");
-                StringAssert.Contains("doclerholding.jpg", image_src);
+                HomePageInstance = new HomePage(driver);
+                driver.Url = HomePageInstance.GetBaseAddress() + HomePageInstance.GetUniqueString();
+                CurrentPage = HomePageInstance;
             }
-            else if (elementTag.Equals("input"))
+            else if (String.Equals(page, "Form"))
             {
-                Assert.IsTrue(webElement.Displayed);
+                FormPageInstance = new FormPage(driver);
+                driver.Url = FormPageInstance.GetBaseAddress() + FormPageInstance.GetUniqueString();
+                CurrentPage = FormPageInstance;
+            }
+            else if (String.Equals(page, "Error"))
+            {
+                ErrorPageInstance = new ErrorPage(driver);
+                driver.Url = ErrorPageInstance.GetBaseAddress() + ErrorPageInstance.GetUniqueString();
+                CurrentPage = ErrorPageInstance;
+            }
+            else if (String.Equals(page, "Hello"))
+            {
+                HelloPageInstance = new HelloPage(driver);
+                driver.Url = HelloPageInstance.GetBaseAddress() + HelloPageInstance.GetUniqueString();
+                CurrentPage = HelloPageInstance;
+            }
+            else
+            {
+                System.Console.WriteLine("Invalid Page");
+                Assert.Fail();
             }
         }
 
-        [Then(@"The ""(.*)"" should be ""(.*)""")]
-        public void ThenTheShouldBe(string p0, string p1)
+        [Then(@"The ""(.*)"" should be visible")]
+        public void ThenTheShouldBeVisible(string element)
         {
-            //ScenarioContext.Current.Pending();
-            System.Console.WriteLine("Printer: ThenTheShouldBe - String");
+            switch (element)
+            {
+                case "form":
+                    {
+                        System.Console.WriteLine("Checking visibility: form");
+                        Assert.IsTrue(((FormPage)CurrentPage).IsTheFormVisible());
+                        break;
+                    }
+                case "input field":
+                    {
+                        System.Console.WriteLine("Checking visibility: input field");
+                        Assert.IsTrue(((FormPage)CurrentPage).IsTheInputFieldVisible());
+                        break;
+                    }
+                case "submit button":
+                    {
+                        System.Console.WriteLine("Checking visibility: submit");
+                        Assert.IsTrue(((FormPage)CurrentPage).IsTheSubmitButtonVisible());
+                        break;
+                    }
+                case "company logo":
+                    {
+                        System.Console.WriteLine("Checking visibility: logo");
+                        Assert.IsTrue(CurrentPage.IsTheLogoVisible());
+                        break;
+                    }
+                default:
+                    {
+                        System.Console.WriteLine("Invalid Element");
+                        Assert.Fail();
+                        break;
+                    }
+            }
         }
 
         [Then(@"The title should be ""(.*)""")]
@@ -52,25 +99,22 @@ namespace docler_test.StepDefinitions
             Assert.AreEqual(title_string, currentTitle);
         }
 
-        [Then(@"The ""(.*)"" should turn to active status")]
-        public void ThenTheShouldTurnToActiveStatus(string button)
+
+        [Then(@"The ""(.*)"" button should turn to active status")]
+        public void ThenTheButtonShouldTurnToActiveStatus(string button)
         {
-            //ScenarioContext.Current.Pending();
-            System.Console.WriteLine("Printer: ThenTheShouldTurnToActiveStatus - String");
-            IWebElement button_element = driver.FindElement(By.Id(button));
-            IWebElement button_parent = button_element.FindElement(By.XPath("./.."));
-            String className = button_parent.GetAttribute("class");
-            StringAssert.AreEqualIgnoringCase("active", className);
+            Assert.IsTrue(CurrentPage.IsButtonActive());
         }
         
         [Then(@"The text should be visible in ""(.*)"": ""(.*)""")]
         public void ThenTheTextShouldBeVisibleIn(string tagType, string textCheck)
         {
-            //ScenarioContext.Current.Pending();
-            System.Console.WriteLine("Printer: ThenTheTextShouldBeVisibleIn - String");
+            /*
             IWebElement element = driver.FindElement(By.TagName(tagType));
             String text = element.Text;
             Assert.AreEqual(textCheck, text);
+            */
+            Assert.IsTrue(((HomePage)CurrentPage).IsTheTextVisible(tagType, textCheck));
         }
     }
 }

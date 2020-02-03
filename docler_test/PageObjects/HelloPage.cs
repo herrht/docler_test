@@ -11,18 +11,25 @@ namespace docler_test.PageObjects
 {
     class HelloPage : CommonPage
     {
-        private IWebDriver driver;
-        private String UniqueString = "/hello.html";
+        // --- Elements ---------------------------- //
+        [FindsBy(How = How.Id, Using = "dh_logo")]
+        public IWebElement LogoElement { get; set; }
 
         [FindsBy(How = How.Id, Using = "hello-text")]
         public IWebElement HelloTextElement { get; set; }
 
+        // --- Variables --------------------------- //
+        private IWebDriver driver;
+        private String UniqueString = "/hello.html";
+
+        // --- Constructor ------------------------- //
         public HelloPage(IWebDriver driver)
         {
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
 
+        // --- Functions --------------------------- //
         public String GetCurrentUrl()
         {
             return driver.Url;
@@ -36,6 +43,11 @@ namespace docler_test.PageObjects
         public String HelloText()
         {
             return HelloTextElement.Text;
+        }
+
+        override public Boolean IsTheLogoVisible()
+        {
+            return LogoElement.Displayed;
         }
     }
 }
