@@ -19,6 +19,8 @@ namespace docler_test.StepDefinitions
         public void GivenTheNavigationBarIsVisible()
         {
             driver = new ChromeDriver();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
             NavigationBarInstance = new NavigationBar(driver);
             Assert.IsTrue(NavigationBarInstance.IsTheNavBarDisplayed());
         }
@@ -58,6 +60,14 @@ namespace docler_test.StepDefinitions
         public void ThenIShouldGetAnErrorResponseCode()
         {
             Assert.IsTrue((((ErrorPage)CommonPageInstance).VerifyErrorMessage()));
+        }
+
+        [AfterScenario]
+        [Scope(Feature = "PageNavigation")]
+        public void AfterScenario()
+        {
+            driver.Quit();
+            driver.Dispose();
         }
 
     }

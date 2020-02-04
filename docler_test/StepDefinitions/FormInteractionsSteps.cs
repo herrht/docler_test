@@ -19,6 +19,8 @@ namespace docler_test.StepDefinitions
         public void GivenIAmOnTheFormPage()
         {
             driver = new ChromeDriver();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
             FormPageInstance = new FormPage(driver);
             FormPageInstance.OpenFormPage();
         }
@@ -46,5 +48,14 @@ namespace docler_test.StepDefinitions
         {
             Assert.IsTrue(HelloPageInstance.HelloText().Contains(welcome));
         }
+
+        [AfterScenario]
+        [Scope(Feature = "FormInteractions")]
+        public void AfterScenario()
+        {
+            driver.Quit();
+            driver.Dispose();
+        }
+
     }
 }

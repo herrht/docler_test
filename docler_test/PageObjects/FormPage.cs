@@ -38,7 +38,6 @@ namespace docler_test.PageObjects
         // --- Functions --------------------------- //
         public void OpenFormPage()
         {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Url = "http://uitest.duodecadits.com/form.html";
         }
         public HelloPage ClickOnSubmitButton()

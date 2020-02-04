@@ -22,6 +22,7 @@ namespace docler_test.StepDefinitions
         public void WhenIAmOnThe(string page)
         {
             driver = new ChromeDriver();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             if (String.Equals(page, "Home"))
             {
@@ -110,6 +111,14 @@ namespace docler_test.StepDefinitions
         public void ThenTheTextShouldBeVisibleIn(string tagType, string textCheck)
         {
             Assert.IsTrue(((HomePage)CurrentPage).IsTheTextVisible(tagType, textCheck));
+        }
+
+        [AfterScenario]
+        [Scope(Feature = "PageAppearance")]
+        public void AfterScenario()
+        {
+            driver.Quit();
+            driver.Dispose();
         }
     }
 }
